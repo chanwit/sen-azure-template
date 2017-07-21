@@ -1,0 +1,12 @@
+- name: remove resource group
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: remove the [[name]] resource group
+    azure_rm_resourcegroup:
+      name: [[name]]
+      location: [[region]]
+      tags:
+        project: [[name]]
+        stage: prototype
+      state: absent
