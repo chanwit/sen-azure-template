@@ -1,0 +1,16 @@
+- name: setup resource group
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: create the [[name]] resource group
+    azure_rm_resourcegroup:
+      name: [[name]]
+      location: [[region]]
+      tags:
+        project: [[name]]
+        stage: prototype
+  - name: create storage account
+    azure_rm_storageaccount:
+      resource_group: [[name]]
+      name: [[name]]storage001
+      account_type: Standard_LRS
